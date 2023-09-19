@@ -45,6 +45,8 @@ export default function Register() {
               maxWidth: 500
             }}
           >
+            <TextField id="outlined-basic" fullWidth label="Nome Completo" variant="outlined" sx={{ marginBottom: 2 }} />
+            <TextField id="outlined-basic" fullWidth label="CPF" variant="outlined" sx={{ marginBottom: 2 }} />
             <TextField id="outlined-basic" fullWidth label="Email" variant="outlined" sx={{ marginBottom: 2 }} />
             <FormControl fullWidth variant="outlined" sx={{ marginBottom: 2 }}>
               <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
@@ -68,7 +70,7 @@ export default function Register() {
             </FormControl>
             <Grid container justifyContent="flex-end">
                 <Button variant="contained" color="error" endIcon={<LoginIcon />}>
-                  Entrar
+                    Cadastrar
                 </Button>
             </Grid>
           </Box>
