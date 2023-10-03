@@ -10,6 +10,7 @@ import { Button } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { Link } from '@mui/material';
+import { useState } from 'react'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -62,10 +63,19 @@ const redTheme = createTheme({
   });
 
 export default function Navbar() {
+    const [pesquisa, setPesquisa] = useState("")
+
     const navigate = useNavigate();
 
     const handleNavigate = (route) => {
-        navigate(route);
+      navigate(route);
+      setPesquisa("")
+    };
+
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        navigate('/produto', { state: { propriedade: pesquisa } });
+      }
     };
 
   return (
@@ -88,8 +98,11 @@ export default function Navbar() {
                         <SearchIcon />
                     </SearchIconWrapper>
                     <StyledInputBase
-                        placeholder="Search…"
-                        inputProps={{ 'aria-label': 'search' }}
+                      placeholder="Search…"
+                      inputProps={{ 'aria-label': 'search' }}
+                      value={pesquisa}
+                      onChange={(e) => setPesquisa(e.target.value)}
+                      onKeyPress={handleKeyPress}
                     />
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />

@@ -12,6 +12,10 @@ import { Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
 
 const FormBox = styled(Box)(({ theme }) => ({
   backgroundColor: '#e3e3e3', 
@@ -46,7 +50,8 @@ export default function Register() {
             }}
           >
             <TextField id="outlined-basic" fullWidth label="Nome Completo" variant="outlined" sx={{ marginBottom: 2 }} />
-            <TextField id="outlined-basic" fullWidth label="CPF" variant="outlined" sx={{ marginBottom: 2 }} />
+            <TextField label="Idade" fullWidth type="number" variant="outlined" sx={{ marginBottom: 2 }} />
+            <TextField label="CPF" fullWidth variant="outlined" sx={{ marginBottom: 2 }} />
             <TextField id="outlined-basic" fullWidth label="Email" variant="outlined" sx={{ marginBottom: 2 }} />
             <FormControl fullWidth variant="outlined" sx={{ marginBottom: 2 }}>
               <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
@@ -67,6 +72,18 @@ export default function Register() {
                 }
                 label="Senha"
               />
+            </FormControl>
+            <FormControl>
+              <FormLabel id="demo-row-radio-buttons-group-label">Gênero</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                  <FormControlLabel value="female" control={<Radio />} label="Feminino" />
+                  <FormControlLabel value="male" control={<Radio />} label="Masculino" />
+                  <FormControlLabel value="other" control={<Radio />} label="Outro" />
+                </RadioGroup>
             </FormControl>
             <Grid container justifyContent="flex-end">
                 <Button variant="contained" color="error" endIcon={<LoginIcon />}>
