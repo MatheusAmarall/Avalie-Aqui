@@ -1,0 +1,61 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "Matheus da Silva Amaral",
+            "idade": 21,
+            "cpf": "12899519930",
+            "email": "m.amaral8998@gmail.com",
+            "senha": "123456",
+            "genero": "Masculino"
+        },
+        {
+            "nome": "matheus amaral",
+            "idade": "21",
+            "cpf": "12899519930",
+            "email": "4156123",
+            "senha": "123456",
+            "genero": "Masculino",
+            "id": 2
+        }
+    ],
+    "produtos": [
+        {
+            "id": 1,
+            "produto": "Iphone X",
+            "comentarios": [
+                {
+                    "id": 1,
+                    "descricao": "blabla",
+                    "idUsuario": 1,
+                    "nota": 5
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "produto": "Robô aspirador",
+            "comentarios": [
+                {
+                    "id": 1,
+                    "descricao": "blabla",
+                    "idUsuario": 1,
+                    "nota": 5
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "produto": "SmartWatch",
+            "comentarios": [
+                {
+                    "id": 1,
+                    "descricao": "blabla",
+                    "idUsuario": 1,
+                    "nota": 5
+                }
+            ]
+        }
+        
+    ]
+}
