@@ -11,6 +11,7 @@ import smartWatch from '../../assets/smartwatch.png'
 import roboAspirador from '../../assets/robot.png'
 import { useNavigate } from 'react-router-dom'; 
 import Rating from '@mui/material/Rating';
+import { useEffect, useState } from 'react';
 
 const DivPrincipal = styled('div')(({ theme }) => ({
     height: '91vh',
@@ -20,11 +21,38 @@ const DivPrincipal = styled('div')(({ theme }) => ({
   }));
 
 export default function Home() {
+    const [messages, setMessages] = useState([])
     const navigate = useNavigate();
 
     const handleClickCard = (product) => {
         navigate('/produto', { state: { propriedade: product } });
     };
+
+    const getMessages = async () => {
+        const req = await fetch(`http://localhost:3000/produtos`)
+        const messages = await req.json();
+
+        setMessages(messages)
+    }
+
+    const getMedia = (product) => {
+        if (messages.length > 0) {
+            const message = messages.find((message) => message.produto === product);
+    
+            if (message && message.comentarios.length > 0) {
+                const totalNotas = message.comentarios.reduce((total, comentario) => total + comentario.nota, 0);
+                const media = totalNotas / message.comentarios.length;
+                return media;
+            }
+        }
+        
+        return 0;
+    }
+
+    useEffect(() => {
+        getMessages()
+    }, [])
+
   return (
     <DivPrincipal>
         <Grid container gap={3} justifyContent="center">
@@ -45,7 +73,7 @@ export default function Home() {
                             Um celular desnecessariamente caro :D
                         </Typography>
                         <Grid mt={1}>
-                            <Rating name="read-only" value={5} readOnly />
+                            <Rating name="read-only" value={getMedia("Iphone X")} readOnly />
                         </Grid>
                     </CardContent>
                 </CardActionArea>
@@ -67,7 +95,7 @@ export default function Home() {
                             Um robô que limpa de montão
                         </Typography>
                         <Grid mt={1}>
-                            <Rating name="read-only" value={4} readOnly />
+                            <Rating name="read-only" value={getMedia("Robô aspirador")} readOnly />
                         </Grid>
                     </CardContent>
                 </CardActionArea>
@@ -89,7 +117,7 @@ export default function Home() {
                             Um relógio super bacaninha
                         </Typography>
                         <Grid mt={1}>
-                            <Rating name="read-only" value={4} readOnly />
+                            <Rating name="read-only" value={getMedia("SmartWatch")} readOnly />
                         </Grid>
                     </CardContent>
                 </CardActionArea>

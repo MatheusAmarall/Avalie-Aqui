@@ -11,6 +11,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { Link } from '@mui/material';
 import { useState } from 'react'
+import { useUserContext } from '../../context/UserContext';
+import { useEffect } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -64,6 +66,10 @@ const redTheme = createTheme({
 
 export default function Navbar() {
     const [pesquisa, setPesquisa] = useState("")
+    const [userName, setUsername] = useState("")
+
+    const { nomeUsuario, setNomeUsuario } = useUserContext();
+    
 
     const navigate = useNavigate();
 
@@ -77,6 +83,17 @@ export default function Navbar() {
         navigate('/produto', { state: { propriedade: pesquisa } });
       }
     };
+
+    const logout = () => {
+      sessionStorage.removeItem("idUsuario")
+      sessionStorage.removeItem("nomeUsuario")
+      setNomeUsuario("")
+      setUsername("")
+    }
+
+    useEffect(() => {
+      setUsername(JSON.parse(sessionStorage.getItem("nomeUsuario")))
+    }, [])
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -107,8 +124,14 @@ export default function Navbar() {
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <Button color="inherit" onClick={() => handleNavigate('/login')}>Entre</Button>
-                        <Button color="inherit" onClick={() => handleNavigate('/register')}>Crie sua conta</Button>
+                      {nomeUsuario || userName ? (
+                        <Button color="inherit" onClick={() => logout()}>Logout</Button>
+                      ) : (
+                        <>
+                          <Button color="inherit" onClick={() => handleNavigate('/login')}>Entre</Button>
+                          <Button color="inherit" onClick={() => handleNavigate('/register')}>Crie sua conta</Button>
+                        </>
+                      )}
                     </Box>
                 </Toolbar>
             </AppBar>

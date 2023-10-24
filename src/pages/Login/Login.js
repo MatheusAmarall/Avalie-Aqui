@@ -15,7 +15,8 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../context/UserContext';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -41,6 +42,8 @@ export default function Register() {
   const [open, setOpen] = useState(false);
   const [severity, setSeverity] = useState("")
   const [message, setMessage] = useState("")
+
+  const { setNomeUsuario } = useUserContext();
 
   const navigate = useNavigate();
 
@@ -70,6 +73,9 @@ export default function Register() {
       const usuario = await req.json();
       if(usuario.length > 0) {
         if(usuario[0].senha === password) {
+          sessionStorage.setItem("idUsuario", JSON.stringify(usuario[0].id))
+          sessionStorage.setItem("nomeUsuario", JSON.stringify(usuario[0].nome))
+          setNomeUsuario(usuario[0].nome);
           navigate("/")
         }
         else {

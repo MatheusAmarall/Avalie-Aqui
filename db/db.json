@@ -1,61 +1,91 @@
 {
-    "usuarios": [
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Matheus da Silva Amaral",
+      "idade": 21,
+      "cpf": "12899519930",
+      "email": "m.amaral8998@gmail.com",
+      "senha": "123456",
+      "genero": "Masculino"
+    },
+    {
+      "nome": "matheus amaral",
+      "idade": "21",
+      "cpf": "12899519930",
+      "email": "4156123",
+      "senha": "123456",
+      "genero": "Masculino",
+      "id": 2
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "produto": "Iphone X",
+      "comentarios": [
         {
-            "id": 1,
-            "nome": "Matheus da Silva Amaral",
-            "idade": 21,
-            "cpf": "12899519930",
-            "email": "m.amaral8998@gmail.com",
-            "senha": "123456",
-            "genero": "Masculino"
+          "descricao": "Produto vagabundo",
+          "idUsuario": 1,
+          "nomeUsuario": "Matheus da Silva Amaral",
+          "nota": 2,
+          "id": 1
         },
         {
-            "nome": "matheus amaral",
-            "idade": "21",
-            "cpf": "12899519930",
-            "email": "4156123",
-            "senha": "123456",
-            "genero": "Masculino",
-            "id": 2
+          "descricao": "produto ruim",
+          "idUsuario": 1,
+          "nomeUsuario": "Matheus da Silva Amaral",
+          "nota": 2
+        },
+        {
+          "descricao": "produto meia boca ruim",
+          "idUsuario": 1,
+          "nomeUsuario": "Matheus da Silva Amaral",
+          "nota": 2
+        },
+        {
+          "descricao": "Produto maravilhosa, apesar de ruim",
+          "idUsuario": 1,
+          "nomeUsuario": "Matheus da Silva Amaral",
+          "nota": 5
+        },
+        {
+          "descricao": "mano ruim ruim e ruim",
+          "idUsuario": 1,
+          "nomeUsuario": "Matheus da Silva Amaral",
+          "nota": 5
         }
-    ],
-    "produtos": [
+      ]
+    },
+    {
+      "id": 2,
+      "produto": "Robô aspirador",
+      "comentarios": [
         {
-            "id": 1,
-            "produto": "Iphone X",
-            "comentarios": [
-                {
-                    "id": 1,
-                    "descricao": "blabla",
-                    "idUsuario": 1,
-                    "nota": 5
-                }
-            ]
+          "descricao": "um produto mediocre",
+          "idUsuario": 1,
+          "nomeUsuario": "Matheus da Silva Amaral",
+          "nota": 2
         },
         {
-            "id": 2,
-            "produto": "Robô aspirador",
-            "comentarios": [
-                {
-                    "id": 1,
-                    "descricao": "blabla",
-                    "idUsuario": 1,
-                    "nota": 5
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "produto": "SmartWatch",
-            "comentarios": [
-                {
-                    "id": 1,
-                    "descricao": "blabla",
-                    "idUsuario": 1,
-                    "nota": 5
-                }
-            ]
+          "descricao": "ah sla, meio bosta",
+          "idUsuario": 1,
+          "nomeUsuario": "Matheus da Silva Amaral",
+          "nota": 3
         }
-        
-    ]
+      ]
+    },
+    {
+      "id": 3,
+      "produto": "SmartWatch",
+      "comentarios": [
+        {
+          "descricao": "não sei meo, joguei fora",
+          "idUsuario": 1,
+          "nomeUsuario": "Matheus da Silva Amaral",
+          "nota": 4
+        }
+      ]
+    }
+  ]
 }
